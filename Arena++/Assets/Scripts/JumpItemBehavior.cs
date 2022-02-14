@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class JumpItemBehavior : MonoBehaviour
 {
+    public GameBehaviour gameManager;
+    private void Start()
+    {
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameBehaviour>();
+    }
+
     void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.name == "Player")
@@ -11,6 +17,8 @@ public class JumpItemBehavior : MonoBehaviour
             Destroy(this.transform.parent.gameObject);
 
             Debug.Log("Jump Boost Collected");
+            gameManager.jumpBoost();
+            gameManager.Items += 1;
         }
     }
 }
