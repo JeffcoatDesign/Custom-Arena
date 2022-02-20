@@ -17,7 +17,7 @@ public class SpeedItemBehavior : MonoBehaviour
 
             Debug.Log("Speed Boost Collected");
 
-            gameManager.speedBoost();
+            gameManager.SpeedBoost();
             gameManager.Items += 1;
         }
     }

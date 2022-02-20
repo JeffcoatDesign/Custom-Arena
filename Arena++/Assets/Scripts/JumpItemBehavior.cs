@@ -17,7 +17,7 @@ public class JumpItemBehavior : MonoBehaviour
             Destroy(this.transform.parent.gameObject);
 
             Debug.Log("Jump Boost Collected");
-            gameManager.jumpBoost();
+            gameManager.JumpBoost();
             gameManager.Items += 1;
         }
     }

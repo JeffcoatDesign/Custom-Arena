@@ -27,11 +27,11 @@ Transform:
   m_GameObject: {fileID: 1336486879470370060}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.81062907, y: 0.81062907, z: 1.0727572}
+  m_LocalScale: {x: 0.22003998, y: 0.22003998, z: 0.22003995}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3063405969668486046}
-  m_RootOrder: 0
+  m_Father: {fileID: 5081256917462952838}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &1336486879470370057
 ParticleSystem:
@@ -4844,8 +4844,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2714435, y: 0.20511626, z: 0.2714435}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1336486879470370063}
+  m_Children: []
   m_Father: {fileID: 5081256917462952838}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4925,6 +4924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d6c12e23701e84ca5fbf6237103b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
 --- !u!95 &3063405969668486043
 Animator:
   serializedVersion: 4
@@ -4974,6 +4974,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3063405969668486046}
+  - {fileID: 1336486879470370063}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

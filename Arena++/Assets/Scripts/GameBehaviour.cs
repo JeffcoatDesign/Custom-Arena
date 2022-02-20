@@ -8,14 +8,15 @@ public class GameBehaviour : MonoBehaviour
     public string labelText = "Collect all 4 items and win your freedom!";
     public int maxItems = 4;
     public bool showWinScreen = false;
+    public bool showLossScreen = false;
 
     public PlayerBehavior playerBehavoir;
     public float defaultSpeedModifier = 1f;
-    public float speedBoostModifier = 1.5f;
-    private string speedBoostText = " ";
+    public float SpeedBoostModifier = 1.5f;
+    private string SpeedBoostText = " ";
     public float defaultjumpModifier = 1f;
-    public float jumpBoostModifier = 2f;
-    private string jumpBoostText = " ";
+    public float JumpBoostModifier = 2f;
+    private string JumpBoostText = " ";
 
     private int _itemsCollected = 0;
     public int Items
@@ -46,39 +47,60 @@ public class GameBehaviour : MonoBehaviour
         {
             _playerHP = value;
             Debug.LogFormat("Lives: {0}", _playerHP);
+
+            if(_playerHP <= 0)
+            {
+                labelText = "You want another life with that?";
+                showLossScreen = true;
+                Time.timeScale = 0;
+            }
+            else
+            {
+                labelText = "Ouch... that's got to hurt.";
+            }
         }
     }
-
     private void Start()
     {
         playerBehavoir = GameObject.Find("Player").GetComponent<PlayerBehavior>();
     }
 
-    public void speedBoost()
+    public void SpeedBoost()
     {
-        playerBehavoir.speedModifier = speedBoostModifier;
-        speedBoostText = "Speed Boost Active";
+        playerBehavoir.SpeedModifier = SpeedBoostModifier;
+        SpeedBoostText = "Speed Boost Active";
     }
 
-    public void jumpBoost()
+    public void JumpBoost()
     {
-        playerBehavoir.jumpModifier = jumpBoostModifier;
-        jumpBoostText = "Jump Boost Active";
+        playerBehavoir.JumpModifier = JumpBoostModifier;
+        JumpBoostText = "Jump Boost Active";
     }
-
+    void RestartLevel()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1.0f;
+    }
     private void OnGUI()
     {
         GUI.Box(new Rect(20, 20, 150, 25), "Player Health: " + _playerHP);
         GUI.Box(new Rect(20, 50, 150, 25), "Items Collected: " + _itemsCollected);
         GUI.Label(new Rect(Screen.width / 2 - 100, Screen.height - 50, 300, 50), labelText);
-        GUI.Box(new Rect(20, 80, 150, 25), speedBoostText);
-        GUI.Box(new Rect(20, 110, 150, 25), jumpBoostText);
+        GUI.Box(new Rect(20, 80, 150, 25), SpeedBoostText);
+        GUI.Box(new Rect(20, 110, 150, 25), JumpBoostText);
+
         if (showWinScreen)
         {
             if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 50, 200, 100), "YOU WON!"))
             {
-                SceneManager.LoadScene(0);
-                Time.timeScale = 1.0f;
+                RestartLevel();
+            }
+        }
+        if (showLossScreen)
+        {
+            if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 -50, 200, 100), "You lose..."))
+            {
+                RestartLevel();
             }
         }
     }

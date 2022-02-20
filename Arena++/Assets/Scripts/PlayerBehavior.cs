@@ -9,33 +9,32 @@ public class PlayerBehavior : MonoBehaviour
     public float jumpVelocity = 5f;
     public float distanceToGround = 0.1f;
     public LayerMask groundLayer;
-    public float speedModifier = 1f;
-    public float jumpModifier = 1f;
+    public float SpeedModifier = 1f;
+    public float JumpModifier = 1f;
 
     public GameObject bullet;
     public float bulletSpeed = 100f;
 
     private float _vInput;
     private float _hInput;
-
     private Rigidbody _rb;
-
     private CapsuleCollider _col;
+    private GameBehaviour _gameManager;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
-
         _col = GetComponent<CapsuleCollider>();
+        _gameManager = GameObject.Find("Game Manager").GetComponent<GameBehaviour>();
     }
 
     void Update()
     {
-        if(IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
         {
-            _rb.AddForce(Vector3.up * jumpVelocity * jumpModifier, ForceMode.Impulse);
+            _rb.AddForce(Vector3.up * jumpVelocity * JumpModifier, ForceMode.Impulse);
         }
-        
+
         if (Input.GetMouseButtonDown(0))
         {
             GameObject newBullet = Instantiate(bullet, this.transform.position + new Vector3(1, 0, 0), this.transform.rotation) as GameObject;
@@ -47,11 +46,6 @@ public class PlayerBehavior : MonoBehaviour
 
         _vInput = Input.GetAxis("Vertical") * moveSpeed;
         _hInput = Input.GetAxis("Horizontal") * rotateSpeed;
-
-        /*
-        this.transform.Translate(Vector3.forward * vInput * Time.deltaTime);
-        this.transform.Rotate(Vector3.up * hInput * Time.deltaTime);
-        */
     }
 
     private void FixedUpdate()
@@ -60,11 +54,9 @@ public class PlayerBehavior : MonoBehaviour
 
         Quaternion angleRot = Quaternion.Euler(rotation * Time.fixedDeltaTime);
 
-        _rb.MovePosition(this.transform.position + this.transform.forward * _vInput * Time.fixedDeltaTime * speedModifier);
+        _rb.MovePosition(this.transform.position + this.transform.forward * _vInput * Time.fixedDeltaTime * SpeedModifier);
 
         _rb.MoveRotation(_rb.rotation * angleRot);
-
-        
     }
 
     private bool IsGrounded()
@@ -74,5 +66,13 @@ public class PlayerBehavior : MonoBehaviour
         bool grounded = Physics.CheckCapsule(_col.bounds.center, capsuleBottom, distanceToGround, groundLayer, QueryTriggerInteraction.Ignore);
 
         return grounded;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "Enemy")
+        {
+            _gameManager.HP -= 1;
+        }
     }
 }
