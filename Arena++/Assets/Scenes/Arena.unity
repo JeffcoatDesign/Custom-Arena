@@ -14375,13 +14375,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7989523867492923057, guid: c8cb2e055fc225a4893699267d1dce97, type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 7201679349717764803, guid: 5f6c687abf527494194a044e69e3c57a, type: 3}
-    - target: {fileID: 7989523867492923057, guid: c8cb2e055fc225a4893699267d1dce97, type: 3}
-      propertyPath: groundLayer.m_Bits
-      value: 64
+    - target: {fileID: 7989523867492923056, guid: c8cb2e055fc225a4893699267d1dce97, type: 3}
+      propertyPath: m_Interpolate
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7989523867492923058, guid: c8cb2e055fc225a4893699267d1dce97, type: 3}
       propertyPath: m_Name
@@ -14430,6 +14426,10 @@ PrefabInstance:
     - target: {fileID: 7989523867492923068, guid: c8cb2e055fc225a4893699267d1dce97, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7989523867492923071, guid: c8cb2e055fc225a4893699267d1dce97, type: 3}
+      propertyPath: m_Radius
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c8cb2e055fc225a4893699267d1dce97, type: 3}
@@ -22564,14 +22564,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Wall Corner (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 1851013419894056381, guid: 32467b8dc355cd04da356b17dbac4f29, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1851013419894056381, guid: 32467b8dc355cd04da356b17dbac4f29, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 3452931867044665262, guid: 32467b8dc355cd04da356b17dbac4f29, type: 3}
       propertyPath: m_RootOrder
       value: 150
@@ -23403,14 +23395,6 @@ PrefabInstance:
     - target: {fileID: 5341519867693014527, guid: 4e661a4b9cf2fac4dbc610ceb59e77b8, type: 3}
       propertyPath: m_Name
       value: Catwalk Rails Long (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5341519867693014527, guid: 4e661a4b9cf2fac4dbc610ceb59e77b8, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 5341519867693014527, guid: 4e661a4b9cf2fac4dbc610ceb59e77b8, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8969971835649028076, guid: 4e661a4b9cf2fac4dbc610ceb59e77b8, type: 3}
       propertyPath: m_RootOrder
@@ -25555,6 +25539,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6252346757869592013, guid: 32467b8dc355cd04da356b17dbac4f29, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: eb206b35da93d8e409fac6e9fd5fec0b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32467b8dc355cd04da356b17dbac4f29, type: 3}
 --- !u!4 &1678019947 stripped

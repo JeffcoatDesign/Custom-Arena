@@ -17,6 +17,7 @@ public class PlayerBehavior : MonoBehaviour
 
     private float _vInput;
     private float _hInput;
+    private float _currentSpeed;
     private Rigidbody _rb;
     private CapsuleCollider _col;
     private GameBehaviour _gameManager;
@@ -44,7 +45,7 @@ public class PlayerBehavior : MonoBehaviour
             bulletRB.velocity = this.transform.forward * bulletSpeed;
         }
 
-        _vInput = Input.GetAxis("Vertical") * moveSpeed;
+        _vInput = Input.GetAxis("Vertical") * moveSpeed * SpeedModifier;
         _hInput = Input.GetAxis("Horizontal") * rotateSpeed;
     }
 
@@ -54,8 +55,7 @@ public class PlayerBehavior : MonoBehaviour
 
         Quaternion angleRot = Quaternion.Euler(rotation * Time.fixedDeltaTime);
 
-        _rb.MovePosition(this.transform.position + this.transform.forward * _vInput * Time.fixedDeltaTime * SpeedModifier);
-
+        _rb.MovePosition(this.transform.position + this.transform.forward * _vInput * Time.fixedDeltaTime);
         _rb.MoveRotation(_rb.rotation * angleRot);
     }
 
