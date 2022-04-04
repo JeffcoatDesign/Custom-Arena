@@ -32008,7 +32008,7 @@ ReflectionProbe:
   m_RenderDynamicObjects: 1
   m_UseOcclusionCulling: 1
   m_Importance: 1
-  m_CustomBakedTexture: {fileID: 0}
+  m_CustomBakedTexture: {fileID: 8900000, guid: 3a0d40c94812414468f48bcc77d4adac, type: 3}
 --- !u!1001 &1545139539
 PrefabInstance:
   m_ObjectHideFlags: 0
