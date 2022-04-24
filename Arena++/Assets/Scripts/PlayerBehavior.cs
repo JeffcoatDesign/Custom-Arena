@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerBehavior : MonoBehaviour
 {
@@ -17,10 +18,11 @@ public class PlayerBehavior : MonoBehaviour
 
     private float _vInput;
     private float _hInput;
-    private float _currentSpeed;
     private Rigidbody _rb;
     private CapsuleCollider _col;
     private GameBehaviour _gameManager;
+
+    [SerializeField] AudioSource _playerAudio;
 
     private void Start()
     {
@@ -36,12 +38,13 @@ public class PlayerBehavior : MonoBehaviour
             _rb.AddForce(Vector3.up * jumpVelocity * JumpModifier, ForceMode.Impulse);
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !PauseMenu.GameIsPaused)
         {
             GameObject newBullet = Instantiate(bullet, this.transform.position + new Vector3(1, 0, 0), this.transform.rotation) as GameObject;
 
             Rigidbody bulletRB = newBullet.GetComponent<Rigidbody>();
 
+            _playerAudio.Play();
             bulletRB.velocity = this.transform.forward * bulletSpeed;
         }
 
